@@ -25,6 +25,12 @@ def show_przysiad():
     return Response(functions.przysiad(cap),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
+@app.route('/pompka')
+def show_pompka():
+    cap = cv2.VideoCapture(0)
+    return Response(functions.pompka(cap),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=2204, threaded=True)
 
