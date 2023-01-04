@@ -5,6 +5,12 @@ h1 {
     padding: 10px;
 }
 
+.row {
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+}
+
 .button {
     background-color: #4CAF50; /* Green */
     border: none;

@@ -2,16 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha256-/ykJw/wDxMa0AQhHDYfuMEwVb4JHMx9h4jD4XvHqVzU=" crossorigin="anonymous" />
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
     <title>chadAI</title>
 </head>
 <body>
    <h1>welcome to chadAI</h1>
-    <button class="button button1">Przysiady</button>
-    <button class="button button2">Biceps</button>
-    <button class="button button3">Pompka</button>
-    <button class="button button4">Brzuszki</button>
-    <button class="button button5">TBA</button>
-    <button class="button button6">TBA</button>
+    <div class="row">
+        <a class="button button1" href="{{ url_for('show_przysiad') }}">Przysiady</a>
+        <a class="button button2" href="{{ url_for('show_biceps') }}">Biceps</a>
+        <a class="button button3" href="{{ url_for('show_pompka') }}">Pompka</a>
+    </div>
+    <div class="row">
+        <a class="button button4" href="{{ url_for('show_brzuszki') }}">Brzuszki</a>
+        <a class="button button5" href="{{ url_for('show_military') }}">Military</a>
+        <a class="button button6" href="{{ url_for('show_wznosy') }}">Wznosy</a>
+    </div>
+
 </body>
 </html>
