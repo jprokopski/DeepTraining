@@ -50,7 +50,7 @@ def biceps(cap):
                             tuple(np.multiply(right_elbow, [640, 480]).astype(int)), 
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                     )
-
+                
                 if left_angle > 160 and right_angle > 160:
                         stage = "down"
 
@@ -107,12 +107,15 @@ def przysiad(cap):
 
                 cv2.putText(image, str(round(right_angle)), tuple(np.multiply(right_knee, [640, 480]).astype(int)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
 
-                if left_angle > 160 and right_angle > 160:
-                        stage = "down"
 
-                if left_angle < 90 and stage =='down' and right_angle < 90:
+                if left_angle > 160 and right_angle > 160 and stage=="down":
                         stage = "up"
-                        counter +=1
+                        counter += 1
+                elif left_angle > 160 and right_angle > 160:
+                        stage = "up"
+
+                if left_angle < 120 and stage =='up' and right_angle < 120:
+                        stage = "down"
 
             except:
                 pass
@@ -178,12 +181,14 @@ def pompka(cap):
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                     )
 
-                if left_angle > 160 and right_angle > 160 and big_angle > 45:
+                if left_angle > 160 and right_angle > 160 and big_angle > 45 and stage == "down":
+                        stage = "up"
+                        counter += 1
+                elif left_angle > 160 and right_angle > 160 and big_angle > 45:
                         stage = "up"
 
                 if left_angle < 90 and stage =='up' and right_angle < 90 and big_angle > 45:
                         stage = "down"
-                        counter +=1
 
             except:
                 pass
@@ -234,12 +239,15 @@ def brzuszki(cap):
 
                 cv2.putText(image, str(round(right_angle)), tuple(np.multiply(right_hip, [640, 480]).astype(int)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
 
-                if left_angle > 130 and right_angle > 130:
+                if left_angle > 90 and right_angle > 90 and stage == "up":
+                        stage = "down"
+                        counter +=1
+                elif left_angle > 130 and right_angle > 130:
                         stage = "down"
 
                 if left_angle < 70 and stage =='down' and right_angle < 70:
                         stage = "up"
-                        counter +=1
+
 
             except:
                 pass
