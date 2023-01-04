@@ -1,5 +1,8 @@
+body {
+  background-color: lightgray;
+}
+
 h1 {
-    border: 2px #eee solid;
     color: rgb(46, 9, 105);
     text-align: center;
     padding: 30px;
