@@ -37,6 +37,18 @@ def show_brzuszki():
     return Response(functions.brzuszki(cap),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
+@app.route('/military')
+def show_military():
+    cap = cv2.VideoCapture(0)
+    return Response(functions.military(cap),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/wznosy')
+def show_wznosy():
+    cap = cv2.VideoCapture(0)
+    return Response(functions.wznosy(cap),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=2204, threaded=True)
 
