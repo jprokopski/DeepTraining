@@ -42,13 +42,13 @@ def biceps(cap):
                 right_angle = calculate_angle(right_shoulder, right_elbow, right_wrist)
                 
                 cv2.putText(image, str(round(left_angle)), 
-                            tuple(np.multiply(left_elbow, [640, 480]).astype(int)), 
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
+                            tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), 
+                            cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                     )
 
                 cv2.putText(image, str(round(right_angle)), 
-                            tuple(np.multiply(right_elbow, [640, 480]).astype(int)), 
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
+                            tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), 
+                            cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                     )
                 
                 if left_angle > 160 and right_angle > 160:
@@ -103,9 +103,9 @@ def przysiad(cap):
                 left_angle = calculate_angle(left_hip, left_knee, left_ankle)
                 right_angle = calculate_angle(right_hip, right_knee, right_ankle)
                 
-                cv2.putText(image, str(round(left_angle)), tuple(np.multiply(left_knee, [640, 480]).astype(int)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
+                cv2.putText(image, str(round(left_angle)), tuple(np.multiply(left_knee, [1280, 720]).astype(int)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
 
-                cv2.putText(image, str(round(right_angle)), tuple(np.multiply(right_knee, [640, 480]).astype(int)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
+                cv2.putText(image, str(round(right_angle)), tuple(np.multiply(right_knee, [1280, 720]).astype(int)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
 
 
                 if left_angle > 160 and right_angle > 160 and stage=="down":
@@ -167,17 +167,17 @@ def pompka(cap):
                 big_angle = calculate_angle(left_wrist, left_shoulder, left_ankle)
                 
                 cv2.putText(image, str(round(left_angle)), 
-                            tuple(np.multiply(left_elbow, [640, 480]).astype(int)), 
+                            tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), 
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                     )
 
                 cv2.putText(image, str(round(right_angle)), 
-                            tuple(np.multiply(right_elbow, [640, 480]).astype(int)), 
+                            tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), 
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                     )
 
                 cv2.putText(image, str(round(big_angle)), 
-                            tuple(np.multiply(left_shoulder, [640, 480]).astype(int)), 
+                            tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                     )
 
@@ -235,9 +235,9 @@ def brzuszki(cap):
                 left_angle = calculate_angle(left_shoulder, left_hip, left_knee)
                 right_angle = calculate_angle(right_shoulder, right_hip, right_knee)
                 
-                cv2.putText(image, str(round(left_angle)), tuple(np.multiply(left_hip, [640, 480]).astype(int)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
+                cv2.putText(image, str(round(left_angle)), tuple(np.multiply(left_hip, [1280, 720]).astype(int)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
 
-                cv2.putText(image, str(round(right_angle)), tuple(np.multiply(right_hip, [640, 480]).astype(int)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
+                cv2.putText(image, str(round(right_angle)), tuple(np.multiply(right_hip, [1280, 720]).astype(int)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA)
 
                 if left_angle > 90 and right_angle > 90 and stage == "up":
                         stage = "down"
@@ -295,12 +295,12 @@ def military(cap):
                 right_angle = calculate_angle(right_hip, right_shoulder, right_elbow)
                 
                 cv2.putText(image, str(round(left_angle)), 
-                            tuple(np.multiply(left_shoulder, [640, 480]).astype(int)), 
+                            tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                     )
 
                 cv2.putText(image, str(round(right_angle)), 
-                            tuple(np.multiply(right_shoulder, [640, 480]).astype(int)), 
+                            tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                     )
 
@@ -357,12 +357,12 @@ def wznosy(cap):
                 right_angle = calculate_angle(right_hip, right_shoulder, right_elbow)
                 
                 cv2.putText(image, str(round(left_angle)), 
-                            tuple(np.multiply(left_shoulder, [640, 480]).astype(int)), 
+                            tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                     )
 
                 cv2.putText(image, str(round(right_angle)), 
-                            tuple(np.multiply(right_shoulder, [640, 480]).astype(int)), 
+                            tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                     )
 
