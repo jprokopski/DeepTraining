@@ -1,5 +1,5 @@
 body {
-  background-color: white;
+  background-color: rgb(0, 0, 0);
 }
 
 h1 {
@@ -17,7 +17,7 @@ h1 {
 }
 
 .button {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
     border: none;
     color: white;
     padding: 60px 130px;
@@ -33,64 +33,88 @@ h1 {
   .button1 {
     background-color: white; 
     color: black;
-    border: 2px solid #4CAF50;
+    border: 2px solid #0b6b0f;
   }
   
   .button1:hover {
-    background-color: #4CAF50;
+    background-color: #00ff08cc;
     color: white;
   }
   
   .button2 {
     background-color: white; 
     color: black; 
-    border: 2px solid #008CBA;
+    border: 2px solid #1a5b70;
   }
   
   .button2:hover {
-    background-color: #008CBA;
+    background-color: #00bfffda;
     color: white;
   }
   
   .button3 {
     background-color: white; 
     color: black; 
-    border: 2px solid orange;
+    border: 2px solid rgb(151, 104, 16);
   }
   
   .button3:hover {
-    background-color: orange;
+    background-color: rgba(255, 166, 0, 0.815);
     color: white;
   }
   
   .button4 {
     background-color: white;
     color: black;
-    border: 2px solid yellow;
+    border: 2px solid rgb(131, 20, 103);
   }
   
   .button4:hover {
-    background-color: yellow;
+    background-color: rgba(255, 0, 221, 0.849);
 }
   
   .button5 {
     background-color: white;
     color: black;
-    border: 2px solid red;
+    border: 2px solid rgb(122, 9, 9);
   }
   
   .button5:hover {
-    background-color: red;
+    background-color: rgba(241, 13, 13, 0.856);
     color: white;
   }
 
   .button6 {
     background-color: white;
     color: black;
-    border: 2px solid #540872;
+    border: 2px solid #4c0966d8;
   }
   
   .button6:hover {
-    background-color: #bb35bb;
+    background-color: #a20afa;
     color: white;
+  }
+
+  .buttondark {
+    background-color: rgb(0, 0, 0);
+    color: black;
+    padding: 0px 0px;
+    margin: 10px;
+    border: 1px solid #ffffffd8;
+    position:absolute;
+    top:0;
+    font-size: 0px;
+    right:0;
+  }
+
+  .buttonwhite {
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    padding: 0px 0px;
+    margin: 10px;
+    border: 1px solid #000000d8;
+    position:absolute;
+    top:0;
+    font-size: 0px;
+    right:0;
   }
