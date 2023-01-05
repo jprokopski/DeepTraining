@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 cap = cv2.VideoCapture(0)
 
+
 @app.route('/')
 def index():
     cap.release()
