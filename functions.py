@@ -64,10 +64,24 @@ def biceps(cap):
             image.flags.writeable = True
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
-            mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                mp_drawing.DrawingSpec(color=(245,117,66), thickness=2, circle_radius=2), 
-                                mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2) 
-                                 ) 
+            cv2.circle(image, tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.line(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), (255, 255, 255), 3)
+
+
+            cv2.circle(image, tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.line(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), (255, 255, 255), 3)
 
             cv2.rectangle(image, (0,0), (225,73), (245,117,16), -1)
             cv2.putText(image, 'REPS', (15,12), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,0), 1, cv2.LINE_AA)
@@ -123,10 +137,24 @@ def przysiad(cap):
             image.flags.writeable = True
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
-            mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                mp_drawing.DrawingSpec(color=(245,117,66), thickness=2, circle_radius=2), 
-                                mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2) 
-                                 ) 
+            cv2.circle(image, tuple(np.multiply(right_hip, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_hip, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_knee, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_knee, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_ankle, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_ankle, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.line(image, tuple(np.multiply(right_hip, [1280, 720]).astype(int)), tuple(np.multiply(right_knee, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(right_knee, [1280, 720]).astype(int)), tuple(np.multiply(right_ankle, [1280, 720]).astype(int)), (255, 255, 255), 3)
+
+
+            cv2.circle(image, tuple(np.multiply(left_hip, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_hip, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(left_knee, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_knee, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(left_ankle, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_ankle, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.line(image, tuple(np.multiply(left_hip, [1280, 720]).astype(int)), tuple(np.multiply(left_knee, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(left_knee, [1280, 720]).astype(int)), tuple(np.multiply(left_ankle, [1280, 720]).astype(int)), (255, 255, 255), 3)
 
             cv2.rectangle(image, (0,0), (225,73), (245,117,16), -1)
             cv2.putText(image, 'REPS', (15,12), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,0), 1, cv2.LINE_AA)
@@ -157,9 +185,13 @@ def pompka(cap):
                 left_wrist = [landmarks[mp_pose.PoseLandmark.LEFT_WRIST.value].x,landmarks[mp_pose.PoseLandmark.LEFT_WRIST.value].y]
                 right_shoulder = [landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].y]
                 right_elbow = [landmarks[mp_pose.PoseLandmark.RIGHT_ELBOW.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_ELBOW.value].y]
-                right_wrist = [landmarks[mp_pose.PoseLandmark.RIGHT_WRIST.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_WRIST.value].y]
-
                 left_ankle = [landmarks[mp_pose.PoseLandmark.LEFT_ANKLE.value].x,landmarks[mp_pose.PoseLandmark.LEFT_ANKLE.value].y]
+                right_wrist = [landmarks[mp_pose.PoseLandmark.LEFT_WRIST.value].x,landmarks[mp_pose.PoseLandmark.LEFT_WRIST.value].y]
+                right_ankle = [landmarks[mp_pose.PoseLandmark.RIGHT_ANKLE.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_ANKLE.value].y]
+                left_hip = [landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].x,landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].y]
+                right_hip = [landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].y]
+                left_knee = [landmarks[mp_pose.PoseLandmark.LEFT_KNEE.value].x,landmarks[mp_pose.PoseLandmark.LEFT_KNEE.value].y]
+                right_knee = [landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].y]
 
 
                 left_angle = calculate_angle(left_shoulder, left_elbow, left_wrist)
@@ -181,13 +213,13 @@ def pompka(cap):
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                     )
 
-                if left_angle > 160 and right_angle > 160 and big_angle > 45 and stage == "down":
+                if left_angle > 150 and right_angle > 150 and big_angle > 30 and stage == "down":
                         stage = "up"
                         counter += 1
-                elif left_angle > 160 and right_angle > 160 and big_angle > 45:
+                elif left_angle > 150 and right_angle > 150 and big_angle > 30:
                         stage = "up"
 
-                if left_angle < 90 and stage =='up' and right_angle < 90 and big_angle > 45:
+                if left_angle < 110 and stage =='up' and right_angle < 110 and big_angle > 30:
                         stage = "down"
 
             except:
@@ -196,10 +228,43 @@ def pompka(cap):
             image.flags.writeable = True
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
-            mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                mp_drawing.DrawingSpec(color=(245,117,66), thickness=2, circle_radius=2), 
-                                mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2) 
-                                 ) 
+            cv2.circle(image, tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_knee, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_knee, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_hip, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_hip, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_ankle, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_ankle, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.line(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(right_hip, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(right_knee, [1280, 720]).astype(int)), tuple(np.multiply(right_hip, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(right_knee, [1280, 720]).astype(int)), tuple(np.multiply(right_ankle, [1280, 720]).astype(int)), (255, 255, 255), 3)
+
+            cv2.circle(image, tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(left_knee, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_knee, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(left_hip, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_hip, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(left_ankle, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_ankle, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.line(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(left_hip, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(left_knee, [1280, 720]).astype(int)), tuple(np.multiply(left_hip, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(left_knee, [1280, 720]).astype(int)), tuple(np.multiply(left_ankle, [1280, 720]).astype(int)), (255, 255, 255), 3)
 
             cv2.rectangle(image, (0,0), (225,73), (245,117,16), -1)
             cv2.putText(image, 'REPS', (15,12), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,0), 1, cv2.LINE_AA)
@@ -255,10 +320,23 @@ def brzuszki(cap):
             image.flags.writeable = True
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
-            mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                mp_drawing.DrawingSpec(color=(245,117,66), thickness=2, circle_radius=2), 
-                                mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2) 
-                                 ) 
+            cv2.circle(image, tuple(np.multiply(right_knee, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_knee, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_hip, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_hip, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.line(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(right_hip, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(right_knee, [1280, 720]).astype(int)), tuple(np.multiply(right_hip, [1280, 720]).astype(int)), (255, 255, 255), 3)
+
+            cv2.circle(image, tuple(np.multiply(left_knee, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_knee, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(left_hip, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_hip, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.line(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(left_hip, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(left_knee, [1280, 720]).astype(int)), tuple(np.multiply(left_hip, [1280, 720]).astype(int)), (255, 255, 255), 3)
 
             cv2.rectangle(image, (0,0), (225,73), (245,117,16), -1)
             cv2.putText(image, 'REPS', (15,12), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,0), 1, cv2.LINE_AA)
@@ -287,9 +365,11 @@ def military(cap):
                 left_shoulder = [landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER.value].x,landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER.value].y]
                 left_elbow = [landmarks[mp_pose.PoseLandmark.LEFT_ELBOW.value].x,landmarks[mp_pose.PoseLandmark.LEFT_ELBOW.value].y]
                 left_hip = [landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].x,landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].y]
+                left_wrist = [landmarks[mp_pose.PoseLandmark.LEFT_WRIST.value].x,landmarks[mp_pose.PoseLandmark.LEFT_WRIST.value].y]
                 right_shoulder = [landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].y]
                 right_elbow = [landmarks[mp_pose.PoseLandmark.RIGHT_ELBOW.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_ELBOW.value].y]
                 right_hip = [landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].y]
+                right_wrist = [landmarks[mp_pose.PoseLandmark.RIGHT_WRIST.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_WRIST.value].y]
 
                 left_angle = calculate_angle(left_hip, left_shoulder, left_elbow)
                 right_angle = calculate_angle(right_hip, right_shoulder, right_elbow)
@@ -317,10 +397,30 @@ def military(cap):
             image.flags.writeable = True
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
-            mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                mp_drawing.DrawingSpec(color=(245,117,66), thickness=2, circle_radius=2), 
-                                mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2) 
-                                 ) 
+            cv2.circle(image, tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_hip, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_hip, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.line(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(right_hip, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), (255, 255, 255), 3)
+
+
+            cv2.circle(image, tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(left_hip, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_hip, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.line(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(left_hip, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), (255, 255, 255), 3)
 
             cv2.rectangle(image, (0,0), (225,73), (245,117,16), -1)
             cv2.putText(image, 'REPS', (15,12), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,0), 1, cv2.LINE_AA)
@@ -349,9 +449,11 @@ def wznosy(cap):
                 left_shoulder = [landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER.value].x,landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER.value].y]
                 left_elbow = [landmarks[mp_pose.PoseLandmark.LEFT_ELBOW.value].x,landmarks[mp_pose.PoseLandmark.LEFT_ELBOW.value].y]
                 left_hip = [landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].x,landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].y]
+                left_wrist = [landmarks[mp_pose.PoseLandmark.LEFT_WRIST.value].x,landmarks[mp_pose.PoseLandmark.LEFT_WRIST.value].y]
                 right_shoulder = [landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].y]
                 right_elbow = [landmarks[mp_pose.PoseLandmark.RIGHT_ELBOW.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_ELBOW.value].y]
                 right_hip = [landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].y]
+                right_wrist = [landmarks[mp_pose.PoseLandmark.RIGHT_WRIST.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_WRIST.value].y]
 
                 left_angle = calculate_angle(left_hip, left_shoulder, left_elbow)
                 right_angle = calculate_angle(right_hip, right_shoulder, right_elbow)
@@ -379,10 +481,30 @@ def wznosy(cap):
             image.flags.writeable = True
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
-            mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-                                mp_drawing.DrawingSpec(color=(245,117,66), thickness=2, circle_radius=2), 
-                                mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2) 
-                                 ) 
+            cv2.circle(image, tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(right_hip, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_hip, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.line(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(right_hip, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), (255, 255, 255), 3)
+
+
+            cv2.circle(image, tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.circle(image, tuple(np.multiply(left_hip, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_hip, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+            cv2.line(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(left_hip, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.line(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), (255, 255, 255), 3)
 
             cv2.rectangle(image, (0,0), (225,73), (245,117,16), -1)
             cv2.putText(image, 'REPS', (15,12), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,0), 1, cv2.LINE_AA)
