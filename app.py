@@ -1,7 +1,5 @@
 from flask import Flask, Response, render_template
 import cv2
-import mediapipe as mp
-import numpy as np
 import functions
 
 app = Flask(__name__)
