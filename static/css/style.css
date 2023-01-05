@@ -1,11 +1,12 @@
 body {
-  background-color: lightgray;
+  background-color: white;
 }
 
 h1 {
     color: rgb(46, 9, 105);
     text-align: center;
-    padding: 30px;
+    padding: 0;
+    margin-bottom: 0;
 }
 
 .row {
@@ -19,7 +20,7 @@ h1 {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 100px 200px;
+    padding: 60px 130px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
