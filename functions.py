@@ -1,6 +1,7 @@
 import cv2
 import mediapipe as mp
 import numpy as np
+import simplejpeg
 
 mp_drawing = mp.solutions.drawing_utils
 mp_pose = mp.solutions.pose
@@ -123,12 +124,9 @@ def biceps(cap):
                                 )
                 
 
-            
-
-            ret, jpeg = cv2.imencode('.jpg', image)
-            result = jpeg.tobytes()
+            jpeg = simplejpeg.encode_jpeg(image, colorspace = "BGR")
             yield (b'--frame\r\n'
-            b'Content-Type: image/jpeg\r\n\r\n' + result + b'\r\n\r\n')
+            b'Content-Type: image/jpeg\r\n\r\n' + jpeg + b'\r\n\r\n')
             
 def przysiad(cap):
     counter = 0 
@@ -234,10 +232,9 @@ def przysiad(cap):
                         cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                 )
         
-            ret, jpeg = cv2.imencode('.jpg', image)
-            result = jpeg.tobytes()
+            jpeg = simplejpeg.encode_jpeg(image, colorspace = "BGR")
             yield (b'--frame\r\n'
-            b'Content-Type: image/jpeg\r\n\r\n' + result + b'\r\n\r\n')
+            b'Content-Type: image/jpeg\r\n\r\n' + jpeg + b'\r\n\r\n')
 
 def pompka(cap):
     counter = 0 
@@ -370,10 +367,9 @@ def pompka(cap):
                         cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                 )
 
-            ret, jpeg = cv2.imencode('.jpg', image)
-            result = jpeg.tobytes()
+            jpeg = simplejpeg.encode_jpeg(image, colorspace = "BGR")
             yield (b'--frame\r\n'
-            b'Content-Type: image/jpeg\r\n\r\n' + result + b'\r\n\r\n')
+            b'Content-Type: image/jpeg\r\n\r\n' + jpeg + b'\r\n\r\n')
 
 def brzuszki(cap):
     counter = 0 
@@ -479,10 +475,9 @@ def brzuszki(cap):
                         cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                 )
 
-            ret, jpeg = cv2.imencode('.jpg', image)
-            result = jpeg.tobytes()
+            jpeg = simplejpeg.encode_jpeg(image, colorspace = "BGR")
             yield (b'--frame\r\n'
-            b'Content-Type: image/jpeg\r\n\r\n' + result + b'\r\n\r\n')
+            b'Content-Type: image/jpeg\r\n\r\n' + jpeg + b'\r\n\r\n')
 
 def military(cap):
     counter = 0 
@@ -594,10 +589,9 @@ def military(cap):
                         cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                 )
 
-            ret, jpeg = cv2.imencode('.jpg', image)
-            result = jpeg.tobytes()
+            jpeg = simplejpeg.encode_jpeg(image, colorspace = "BGR")
             yield (b'--frame\r\n'
-            b'Content-Type: image/jpeg\r\n\r\n' + result + b'\r\n\r\n')
+            b'Content-Type: image/jpeg\r\n\r\n' + jpeg + b'\r\n\r\n')
 
 def wznosy(cap):
     counter = 0 
@@ -709,7 +703,6 @@ def wznosy(cap):
                         cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                 )
 
-            ret, jpeg = cv2.imencode('.jpg', image)
-            result = jpeg.tobytes()
+            jpeg = simplejpeg.encode_jpeg(image, colorspace = "BGR")
             yield (b'--frame\r\n'
-            b'Content-Type: image/jpeg\r\n\r\n' + result + b'\r\n\r\n')
+            b'Content-Type: image/jpeg\r\n\r\n' + jpeg + b'\r\n\r\n')
