@@ -40,6 +40,8 @@ def biceps(cap):
                 right_elbow = [landmarks[mp_pose.PoseLandmark.RIGHT_ELBOW.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_ELBOW.value].y]
                 right_wrist = [landmarks[mp_pose.PoseLandmark.RIGHT_WRIST.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_WRIST.value].y]
 
+                left_elbow_text = [landmarks[mp_pose.PoseLandmark.LEFT_ELBOW.value].x-0.01,landmarks[mp_pose.PoseLandmark.LEFT_ELBOW.value].y+0.01]
+
                 left_angle = calculate_angle(left_shoulder, left_elbow, left_wrist)
                 right_angle = calculate_angle(right_shoulder, right_elbow, right_wrist)
                 
@@ -56,25 +58,25 @@ def biceps(cap):
             image.flags.writeable = True
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
-            cv2.circle(image, tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
-            cv2.circle(image, tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
-            cv2.circle(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
-            cv2.circle(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
-            cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
-            cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
+
             cv2.line(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), (255, 255, 255), 3)
             cv2.line(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), (255, 255, 255), 3)
+            cv2.circle(image, tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), 20, (0,128,0), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), 25, (0,128,0), 2)
+            cv2.circle(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), 30, (0,128,0), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), 35, (0,128,0), 2)
+            cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 20, (0,128,0), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 25, (0,128,0), 2)
 
 
-            cv2.circle(image, tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
-            cv2.circle(image, tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
-            cv2.circle(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
-            cv2.circle(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
-            cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 10, (0, 0, 255), cv2.FILLED)
-            cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 15, (0, 0, 255), 2)
             cv2.line(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), (255, 255, 255), 3)
             cv2.line(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), (255, 255, 255), 3)
-
+            cv2.circle(image, tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), 20, (0,128,0), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), 25, (0,128,0), 2)
+            cv2.circle(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), 30, (0,128,0), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), 35, (0,128,0), 2)
+            cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 20, (0,128,0), cv2.FILLED)
+            cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 25, (0,128,0), 2)
 
 
             left_per = np.interp(left_angle, (30, 160), (100, 0))
@@ -114,12 +116,12 @@ def biceps(cap):
             cv2.rectangle(image, (1100, int(left_bar)), (1175, 650), left_color, cv2.FILLED)  
 
             cv2.putText(image, str(round(left_angle)), 
-                        tuple(np.multiply(left_elbow, [1330, 730]).astype(int)), 
+                        tuple(np.multiply(left_elbow_text, [1280, 720]).astype(int)), 
                         cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                 )
 
             cv2.putText(image, str(round(right_angle)), 
-                        tuple(np.multiply(right_elbow, [1120, 720]).astype(int)), 
+                        tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), 
                         cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                 )
                 
