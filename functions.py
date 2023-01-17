@@ -6,7 +6,6 @@ import simplejpeg
 mp_drawing = mp.solutions.drawing_utils
 mp_pose = mp.solutions.pose
 
-
 def calculate_angle(a,b,c):
     a = np.array(a)
     b = np.array(b)
@@ -21,7 +20,7 @@ def calculate_angle(a,b,c):
     return angle 
 
 def biceps(cap):
-    counter = 0 
+    counter = 20 
     stage = None
     with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:
         while cap.isOpened():
@@ -59,7 +58,6 @@ def biceps(cap):
             image.flags.writeable = True
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
-
             cv2.line(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), (255, 255, 255), 3)
             cv2.line(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), (255, 255, 255), 3)
             cv2.circle(image, tuple(np.multiply(right_wrist, [1280, 720]).astype(int)), 20, (255,165,0), cv2.FILLED)
@@ -68,7 +66,6 @@ def biceps(cap):
             cv2.circle(image, tuple(np.multiply(right_elbow, [1280, 720]).astype(int)), 35, (255,165,0), 2)
             cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 20, (255,165,0), cv2.FILLED)
             cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 25, (255,165,0), 2)
-
 
             cv2.line(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), (255, 255, 255), 3)
             cv2.line(image, tuple(np.multiply(left_elbow, [1280, 720]).astype(int)), tuple(np.multiply(left_wrist, [1280, 720]).astype(int)), (255, 255, 255), 3)
@@ -79,12 +76,11 @@ def biceps(cap):
             cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 20, (255,165,0), cv2.FILLED)
             cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 25, (255,165,0), 2)
 
-
             left_per = np.interp(left_angle, (30, 160), (100, 0))
             left_bar = np.interp(left_angle, (30, 160), (100, 650))
             left_color = (0, 165, 255)
             if left_per == 100:
-                left_color = (0, 255, 0)
+                left_color = (0, 128, 0)
   
             if left_per == 0:
                 left_color = (0, 0, 255)
@@ -93,14 +89,14 @@ def biceps(cap):
             right_bar = np.interp(right_angle, (30, 160), (100, 650))
             right_color = (0, 165, 255)
             if right_per == 100:
-                right_color = (0, 255, 0)
+                right_color = (0, 128, 0)
   
             if right_per == 0:
                 right_color = (0, 0, 255)
 
-            whole_color = (0, 165, 255)
+            whole_color = (0, 135, 255)
             if left_per == 100 and right_per == 100:
-                whole_color = (0, 255, 0)
+                whole_color = (0, 128, 0)
   
             if left_per == 0 and right_per == 0:
                 whole_color = (0, 0, 255)
@@ -108,11 +104,21 @@ def biceps(cap):
             cv2.rectangle(image, (100, 100), (175, 650), right_color, 3)
             cv2.rectangle(image, (100, int(right_bar)), (175, 650), right_color, cv2.FILLED)
 
-            cv2.rectangle(image, (475,0), (800,100), whole_color, -1)
-            cv2.putText(image, 'REPS', (510,15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1, cv2.LINE_AA)
-            cv2.putText(image, str(counter), (510,85) if counter < 10 else (490,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
-            cv2.putText(image, 'STAGE', (675,15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1, cv2.LINE_AA)
-            cv2.putText(image, stage, (620,85) if stage == "down" else (660,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
+            #cv2.rectangle(image, (475,0), (800,100), whole_color, -1)
+            #cv2.putText(image, 'REPS', (510,15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1, cv2.LINE_AA)
+            #cv2.putText(image, str(counter), (510,85) if counter < 10 else (490,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
+            #cv2.putText(image, 'STAGE', (675,15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1, cv2.LINE_AA)
+            #cv2.putText(image, stage, (620,85) if stage == "down" else (660,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
+
+            cv2.circle(image, (400,90), 85, (0, 0, 0), cv2.FILLED)
+            cv2.circle(image, (880,90), 85, (0, 0, 0), cv2.FILLED)
+            cv2.circle(image, (400,90), 80, whole_color, cv2.FILLED)
+            cv2.circle(image, (880,90), 80, whole_color, cv2.FILLED)
+            cv2.putText(image, 'REPS', (359,130), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            cv2.putText(image, str(counter), (380,85) if counter < 10 else (360,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
+            cv2.putText(image, 'STAGE', (833,130), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            cv2.putText(image, stage, (820,85) if stage == "down" else (850,85), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255,255,255), 2, cv2.LINE_AA)
+
             cv2.rectangle(image, (1100, 100), (1175, 650), left_color, 3)
             cv2.rectangle(image, (1100, int(left_bar)), (1175, 650), left_color, cv2.FILLED)  
 
@@ -126,7 +132,6 @@ def biceps(cap):
                         cv2.FONT_HERSHEY_DUPLEX, 0.5, (255, 255, 255), 2, cv2.LINE_AA
                                 )
                 
-
             jpeg = simplejpeg.encode_jpeg(image, colorspace = "BGR")
             yield (b'--frame\r\n'
             b'Content-Type: image/jpeg\r\n\r\n' + jpeg + b'\r\n\r\n')
@@ -157,7 +162,6 @@ def przysiad(cap):
                 left_angle = calculate_angle(left_hip, left_knee, left_ankle)
                 right_angle = calculate_angle(right_hip, right_knee, right_ankle)
                 
-
                 if left_angle > 160 and right_angle > 160 and stage=="down":
                         stage = "up"
                         counter += 1
@@ -191,7 +195,6 @@ def przysiad(cap):
             cv2.circle(image, tuple(np.multiply(left_ankle, [1280, 720]).astype(int)), 20, (50,205,50), cv2.FILLED)
             cv2.circle(image, tuple(np.multiply(left_ankle, [1280, 720]).astype(int)), 25, (50,205,50), 2)
 
-
             left_per = np.interp(left_angle, (120, 160), (0, 100))
             left_bar = np.interp(left_angle, (120, 160), (100, 650))
             left_color = (0, 165, 255)
@@ -199,7 +202,7 @@ def przysiad(cap):
                 left_color = (0, 0, 255)
   
             if left_per == 0:
-                left_color = (0, 255, 0)
+                left_color = (0, 128, 0)
 
             right_per = np.interp(right_angle, (120, 160), (0, 100))
             right_bar = np.interp(right_angle, (120, 160), (100, 650))
@@ -208,23 +211,27 @@ def przysiad(cap):
                 right_color = (0, 0, 255)
   
             if right_per == 0:
-                right_color = (0, 255, 0)
+                right_color = (0, 128, 0)
 
             whole_color = (0, 165, 255)
             if left_per == 100 and right_per == 100:
-                whole_color = (0, 255, 0)
+                whole_color = (0, 0, 255)
   
             if left_per == 0 and right_per == 0:
-                whole_color = (0, 0, 255)
+                whole_color = (0, 128, 0)
 
             cv2.rectangle(image, (100, 100), (175, 650), right_color, 3)
             cv2.rectangle(image, (100, int(right_bar)), (175, 650), right_color, cv2.FILLED)
 
-            cv2.rectangle(image, (475,0), (800,100), whole_color, -1)
-            cv2.putText(image, 'REPS', (510,15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1, cv2.LINE_AA)
-            cv2.putText(image, str(counter), (510,85) if counter < 10 else (490,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
-            cv2.putText(image, 'STAGE', (675,15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1, cv2.LINE_AA)
-            cv2.putText(image, stage, (620,85) if stage == "down" else (660,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
+            cv2.circle(image, (400,90), 85, (0, 0, 0), cv2.FILLED)
+            cv2.circle(image, (880,90), 85, (0, 0, 0), cv2.FILLED)
+            cv2.circle(image, (400,90), 80, whole_color, cv2.FILLED)
+            cv2.circle(image, (880,90), 80, whole_color, cv2.FILLED)
+            cv2.putText(image, 'REPS', (359,130), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            cv2.putText(image, str(counter), (380,85) if counter < 10 else (360,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
+            cv2.putText(image, 'STAGE', (833,130), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            cv2.putText(image, stage, (820,85) if stage == "down" else (850,85), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255,255,255), 2, cv2.LINE_AA)
+
             cv2.rectangle(image, (1100, 100), (1175, 650), left_color, 3)
             cv2.rectangle(image, (1100, int(left_bar)), (1175, 650), left_color, cv2.FILLED) 
               
@@ -267,7 +274,6 @@ def pompka(cap):
                 right_hip = [landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].y]
                 left_knee = [landmarks[mp_pose.PoseLandmark.LEFT_KNEE.value].x,landmarks[mp_pose.PoseLandmark.LEFT_KNEE.value].y]
                 right_knee = [landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].x,landmarks[mp_pose.PoseLandmark.RIGHT_KNEE.value].y]
-
 
                 left_angle = calculate_angle(left_shoulder, left_elbow, left_wrist)
                 right_angle = calculate_angle(right_shoulder, right_elbow, right_wrist)
@@ -329,7 +335,6 @@ def pompka(cap):
             cv2.circle(image, tuple(np.multiply(left_ankle, [1280, 720]).astype(int)), 20, (65,105,225), cv2.FILLED)
             cv2.circle(image, tuple(np.multiply(left_ankle, [1280, 720]).astype(int)), 25, (65,105,225), 2)
 
-
             left_per = np.interp(left_angle, (110, 150), (0, 100))
             left_bar = np.interp(left_angle, (110, 150), (100, 650))
             left_color = (0, 165, 255)
@@ -337,7 +342,7 @@ def pompka(cap):
                 left_color = (0, 0, 255)
   
             if left_per == 0:
-                left_color = (0, 255, 0)
+                left_color = (0, 128, 0)
 
             right_per = np.interp(right_angle, (110, 150), (0, 100))
             right_bar = np.interp(right_angle, (110, 150), (100, 650))
@@ -346,11 +351,11 @@ def pompka(cap):
                 right_color = (0, 0, 255)
   
             if right_per == 0:
-                right_color = (0, 255, 0)
+                right_color = (0, 128, 0)
 
             whole_color = (0, 165, 255)
             if left_per == 100 and right_per == 100:
-                whole_color = (0, 255, 0)
+                whole_color = (0, 128, 0)
   
             if left_per == 0 and right_per == 0:
                 whole_color = (0, 0, 255)
@@ -358,11 +363,15 @@ def pompka(cap):
             cv2.rectangle(image, (100, 100), (175, 650), right_color, 3)
             cv2.rectangle(image, (100, int(right_bar)), (175, 650), right_color, cv2.FILLED)
 
-            cv2.rectangle(image, (475,0), (800,100), whole_color, -1)
-            cv2.putText(image, 'REPS', (510,15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1, cv2.LINE_AA)
-            cv2.putText(image, str(counter), (510,85) if counter < 10 else (490,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
-            cv2.putText(image, 'STAGE', (675,15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1, cv2.LINE_AA)
-            cv2.putText(image, stage, (620,85) if stage == "down" else (660,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
+            cv2.circle(image, (400,90), 85, (0, 0, 0), cv2.FILLED)
+            cv2.circle(image, (880,90), 85, (0, 0, 0), cv2.FILLED)
+            cv2.circle(image, (400,90), 80, whole_color, cv2.FILLED)
+            cv2.circle(image, (880,90), 80, whole_color, cv2.FILLED)
+            cv2.putText(image, 'REPS', (359,130), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            cv2.putText(image, str(counter), (380,85) if counter < 10 else (360,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
+            cv2.putText(image, 'STAGE', (833,130), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            cv2.putText(image, stage, (820,85) if stage == "down" else (850,85), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255,255,255), 2, cv2.LINE_AA)
+
             cv2.rectangle(image, (1100, 100), (1175, 650), left_color, 3)
             cv2.rectangle(image, (1100, int(left_bar)), (1175, 650), left_color, cv2.FILLED) 
               
@@ -415,7 +424,6 @@ def brzuszki(cap):
                 if left_angle < 70 and stage =='down' and right_angle < 70:
                         stage = "up"
 
-
             except:
                 pass
 
@@ -431,7 +439,6 @@ def brzuszki(cap):
             cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 20, (186,85,211), cv2.FILLED)
             cv2.circle(image, tuple(np.multiply(right_shoulder, [1280, 720]).astype(int)), 25, (186,85,211), 2)
 
-
             cv2.line(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), tuple(np.multiply(left_hip, [1280, 720]).astype(int)), (255, 255, 255), 3)
             cv2.line(image, tuple(np.multiply(left_knee, [1280, 720]).astype(int)), tuple(np.multiply(left_hip, [1280, 720]).astype(int)), (255, 255, 255), 3)
             cv2.circle(image, tuple(np.multiply(left_knee, [1280, 720]).astype(int)), 20, (255,105,180), cv2.FILLED)
@@ -441,12 +448,11 @@ def brzuszki(cap):
             cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 20, (186,85,211), cv2.FILLED)
             cv2.circle(image, tuple(np.multiply(left_shoulder, [1280, 720]).astype(int)), 25, (186,85,211), 2)
 
-
             left_per = np.interp(left_angle, (70, 120), (100, 0))
             left_bar = np.interp(left_angle, (70, 120), (100, 650))
             left_color = (0, 165, 255)
             if left_per == 100:
-                left_color = (0, 255, 0)
+                left_color = (0, 128, 0)
   
             if left_per == 0:
                 left_color = (0, 0, 255)
@@ -455,14 +461,14 @@ def brzuszki(cap):
             right_bar = np.interp(right_angle, (70, 120), (100, 650))
             right_color = (0, 165, 255)
             if right_per == 100:
-                right_color = (0, 255, 0)
+                right_color = (0, 128, 0)
   
             if right_per == 0:
                 right_color = (0, 0, 255)
 
             whole_color = (0, 165, 255)
             if left_per == 100 and right_per == 100:
-                whole_color = (0, 255, 0)
+                whole_color = (0, 128, 0)
   
             if left_per == 0 and right_per == 0:
                 whole_color = (0, 0, 255)
@@ -470,11 +476,15 @@ def brzuszki(cap):
             cv2.rectangle(image, (100, 100), (175, 650), right_color, 3)
             cv2.rectangle(image, (100, int(right_bar)), (175, 650), right_color, cv2.FILLED)
 
-            cv2.rectangle(image, (475,0), (800,100), whole_color, -1)
-            cv2.putText(image, 'REPS', (510,15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1, cv2.LINE_AA)
-            cv2.putText(image, str(counter), (510,85) if counter < 10 else (490,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
-            cv2.putText(image, 'STAGE', (675,15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1, cv2.LINE_AA)
-            cv2.putText(image, stage, (620,85) if stage == "down" else (660,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
+            cv2.circle(image, (400,90), 85, (0, 0, 0), cv2.FILLED)
+            cv2.circle(image, (880,90), 85, (0, 0, 0), cv2.FILLED)
+            cv2.circle(image, (400,90), 80, whole_color, cv2.FILLED)
+            cv2.circle(image, (880,90), 80, whole_color, cv2.FILLED)
+            cv2.putText(image, 'REPS', (359,130), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            cv2.putText(image, str(counter), (380,85) if counter < 10 else (360,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
+            cv2.putText(image, 'STAGE', (833,130), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            cv2.putText(image, stage, (820,85) if stage == "down" else (850,85), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255,255,255), 2, cv2.LINE_AA)
+
             cv2.rectangle(image, (1100, 100), (1175, 650), left_color, 3)
             cv2.rectangle(image, (1100, int(left_bar)), (1175, 650), left_color, cv2.FILLED) 
 
@@ -557,12 +567,11 @@ def military(cap):
             cv2.circle(image, tuple(np.multiply(left_hip, [1280, 720]).astype(int)), 20, (0, 0, 255), cv2.FILLED)
             cv2.circle(image, tuple(np.multiply(left_hip, [1280, 720]).astype(int)), 25, (0, 0, 255), 2)
 
-
             left_per = np.interp(left_angle, (100, 170), (0, 100))
             left_bar = np.interp(left_angle, (100, 170), (650, 100))
             left_color = (0, 165, 255)
             if left_per == 100:
-                left_color = (0, 255, 0)
+                left_color = (0, 128, 0)
   
             if left_per == 0:
                 left_color = (0, 0, 255)
@@ -571,14 +580,14 @@ def military(cap):
             right_bar = np.interp(right_angle, (100, 170), (650, 100))
             right_color = (0, 165, 255)
             if right_per == 100:
-                right_color = (0, 255, 0)
+                right_color = (0, 128, 0)
   
             if right_per == 0:
                 right_color = (0, 0, 255)
 
             whole_color = (0, 165, 255)
             if left_per == 100 and right_per == 100:
-                whole_color = (0, 255, 0)
+                whole_color = (0, 128, 0)
   
             if left_per == 0 and right_per == 0:
                 whole_color = (0, 0, 255)
@@ -586,11 +595,15 @@ def military(cap):
             cv2.rectangle(image, (100, 100), (175, 650), right_color, 3)
             cv2.rectangle(image, (100, int(right_bar)), (175, 650), right_color, cv2.FILLED)
 
-            cv2.rectangle(image, (475,0), (800,100), whole_color, -1)
-            cv2.putText(image, 'REPS', (510,15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1, cv2.LINE_AA)
-            cv2.putText(image, str(counter), (510,85) if counter < 10 else (490,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
-            cv2.putText(image, 'STAGE', (675,15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1, cv2.LINE_AA)
-            cv2.putText(image, stage, (620,85) if stage == "down" else (660,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
+            cv2.circle(image, (400,90), 85, (0, 0, 0), cv2.FILLED)
+            cv2.circle(image, (880,90), 85, (0, 0, 0), cv2.FILLED)
+            cv2.circle(image, (400,90), 80, whole_color, cv2.FILLED)
+            cv2.circle(image, (880,90), 80, whole_color, cv2.FILLED)
+            cv2.putText(image, 'REPS', (359,130), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            cv2.putText(image, str(counter), (380,85) if counter < 10 else (360,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
+            cv2.putText(image, 'STAGE', (833,130), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            cv2.putText(image, stage, (820,85) if stage == "down" else (850,85), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255,255,255), 2, cv2.LINE_AA)
+
             cv2.rectangle(image, (1100, 100), (1175, 650), left_color, 3)
             cv2.rectangle(image, (1100, int(left_bar)), (1175, 650), left_color, cv2.FILLED) 
               
@@ -636,7 +649,6 @@ def wznosy(cap):
                 right_shoulder_text = [landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].x-0.008,landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].y+0.008]
                 left_shoulder_text = [landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER.value].x-0.008,landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER.value].y+0.008]
                 
-
                 if left_angle > 80 and right_angle > 80:
                         stage = "up"
 
@@ -674,12 +686,11 @@ def wznosy(cap):
             cv2.circle(image, tuple(np.multiply(left_hip, [1280, 720]).astype(int)), 20, (255,20,147), cv2.FILLED)
             cv2.circle(image, tuple(np.multiply(left_hip, [1280, 720]).astype(int)), 25, (255,20,147), 2)
 
-
             left_per = np.interp(left_angle, (20, 80), (0, 100))
             left_bar = np.interp(left_angle, (20, 80), (650, 100))
             left_color = (0, 165, 255)
             if left_per == 100:
-                left_color = (0, 255, 0)
+                left_color = (0, 128, 0)
   
             if left_per == 0:
                 left_color = (0, 0, 255)
@@ -688,14 +699,14 @@ def wznosy(cap):
             right_bar = np.interp(right_angle, (20, 80), (650, 100))
             right_color = (0, 165, 255)
             if right_per == 100:
-                right_color = (0, 255, 0)
+                right_color = (0, 128, 0)
   
             if right_per == 0:
                 right_color = (0, 0, 255)
 
             whole_color = (0, 165, 255)
             if left_per == 100 and right_per == 100:
-                whole_color = (0, 255, 0)
+                whole_color = (0, 128, 0)
   
             if left_per == 0 and right_per == 0:
                 whole_color = (0, 0, 255)
@@ -703,11 +714,15 @@ def wznosy(cap):
             cv2.rectangle(image, (100, 100), (175, 650), right_color, 3)
             cv2.rectangle(image, (100, int(right_bar)), (175, 650), right_color, cv2.FILLED)
 
-            cv2.rectangle(image, (475,0), (800,100), whole_color, -1)
-            cv2.putText(image, 'REPS', (510,15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1, cv2.LINE_AA)
-            cv2.putText(image, str(counter), (510,85) if counter < 10 else (490,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
-            cv2.putText(image, 'STAGE', (675,15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1, cv2.LINE_AA)
-            cv2.putText(image, stage, (620,85) if stage == "down" else (660,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
+            cv2.circle(image, (400,90), 85, (0, 0, 0), cv2.FILLED)
+            cv2.circle(image, (880,90), 85, (0, 0, 0), cv2.FILLED)
+            cv2.circle(image, (400,90), 80, whole_color, cv2.FILLED)
+            cv2.circle(image, (880,90), 80, whole_color, cv2.FILLED)
+            cv2.putText(image, 'REPS', (359,130), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            cv2.putText(image, str(counter), (380,85) if counter < 10 else (360,85), cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
+            cv2.putText(image, 'STAGE', (833,130), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            cv2.putText(image, stage, (820,85) if stage == "down" else (850,85), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255,255,255), 2, cv2.LINE_AA)
+
             cv2.rectangle(image, (1100, 100), (1175, 650), left_color, 3)
             cv2.rectangle(image, (1100, int(left_bar)), (1175, 650), left_color, cv2.FILLED) 
               
