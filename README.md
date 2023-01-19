@@ -1,2 +1,3 @@
 # DeepTraining
-Inteligentna aplikacja do treningu przy użyciu mediapipe, opencv i flask.
+Smart web application using mediapipe, opencv, numpy and flask.
+To run just type in terminal: run flask. And go to website, of course! :)
